@@ -1,13 +1,25 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Header } from './components/Header/Header';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+import Login from './pages/login';
+import SignUp from './pages/signUp';
 
 export const App: React.FunctionComponent = () => {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<Header title="Watch me!" />} />
-			</Routes>
-		</BrowserRouter>
+		<>
+			<Provider store={store}>
+				<BrowserRouter>
+					<ToastContainer />
+					<Routes>
+						<Route path="/" element={<Login />} />
+						<Route path="/signUp" element={<SignUp />} />
+					</Routes>
+				</BrowserRouter>
+			</Provider>
+			,
+		</>
 	);
 };
