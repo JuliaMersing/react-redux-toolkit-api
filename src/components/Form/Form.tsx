@@ -1,13 +1,13 @@
 import React, { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { newUser } from '../../redux/registerSlice';
+import { newUser } from '../../features/registerSlice';
 import { verifyEmail, verifyPassword } from '../../utils/validations';
 import { Button } from '../Button/Button';
 import { Header } from '../Header/Header';
 import { Input } from '../Input/Input';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { existingUser } from '../../redux/signUpSlice';
+import { existingUser } from '../../features/signUpSlice';
 
 export interface FormProps {
 	isSignUp?: boolean;
