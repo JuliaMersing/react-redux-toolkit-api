@@ -1,6 +1,8 @@
 import React from 'react';
 import { useGetAllProductsQuery } from '../../features/apiSlice';
 import { Product } from './type';
+import { Header } from '../Header/Header';
+import { ProductsCard } from './ProductsCard';
 
 export const ProductsList: React.FC = () => {
 	const { data } = useGetAllProductsQuery('products');
@@ -9,18 +11,16 @@ export const ProductsList: React.FC = () => {
 		return <div>Loading...</div>;
 	}
 
-	console.log(data);
-
 	return (
-		<div>
-			<h1>Products</h1>
-			{data.products.map((product: Product) => (
-				<div key={product.id}>
-					<h2>{product.title}</h2>
-					<img src={product.images[0]} alt={product.title} />
-					<p>{product.price}</p>
+		<div className="container-form">
+			<div className="container-header">
+				<Header heading="Best Sellers" />
+				<div className="container-card-list">
+					{data.products.map((product: Product) => (
+						<ProductsCard key={product.id} product={product} />
+					))}
 				</div>
-			))}
+			</div>
 		</div>
 	);
 };

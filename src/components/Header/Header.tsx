@@ -2,9 +2,9 @@ import React from 'react';
 
 interface HeaderProps {
 	heading: string;
-	paragraph: string;
-	href: string;
-	linkParagraph: string;
+	paragraph?: string;
+	href?: string;
+	linkParagraph?: string;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -14,9 +14,6 @@ export const Header: React.FC<HeaderProps> = ({
 	linkParagraph,
 }: HeaderProps) => (
 	<>
-		<div className="flex justify-center">
-			<i className=" fa-solid fa-mug-hot icon" />
-		</div>
 		<h2 className="heading">{heading}</h2>
 		<p className="paragraphs">
 			{paragraph}
