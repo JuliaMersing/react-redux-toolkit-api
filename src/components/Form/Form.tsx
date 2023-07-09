@@ -8,6 +8,7 @@ import { Input } from '../Input/Input';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { existingUser } from '../../features/signUpSlice';
+import { useNavigate } from 'react-router-dom';
 
 export interface FormProps {
 	isSignUp?: boolean;
@@ -21,6 +22,7 @@ export const Form: FC<FormProps> = ({ isSignUp = false }) => {
 	const validLogin = passwordError === '' && emailError === '';
 
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const handleEmail = (event: any): void => {
 		setEmail(event.target.value);
@@ -79,6 +81,7 @@ export const Form: FC<FormProps> = ({ isSignUp = false }) => {
 		} else {
 			dispatch(existingUser({ email }));
 		}
+		navigate('/products');
 	};
 
 	return (
@@ -112,6 +115,7 @@ export const Form: FC<FormProps> = ({ isSignUp = false }) => {
 						<Input
 							id="email"
 							type="email"
+							name="email"
 							value={email}
 							placeholder="Email"
 							onChange={handleEmail}
@@ -123,6 +127,7 @@ export const Form: FC<FormProps> = ({ isSignUp = false }) => {
 							<Input
 								id="password"
 								type="password"
+								name="password"
 								value={password}
 								placeholder="Confirm password"
 								onChange={handlePassword}

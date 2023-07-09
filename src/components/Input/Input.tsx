@@ -6,6 +6,7 @@ export interface InputProps {
 	onBlur?: (e: FormEvent) => void;
 	type?: string;
 	id?: string;
+	name: string;
 	placeholder: string;
 	error?: string;
 	className?: string;
